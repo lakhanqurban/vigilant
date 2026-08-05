@@ -124,7 +124,7 @@ flowchart TD
 ### ORB + Qwen (5 sequences, strict trajectory matching, full sequence length)
 
 | Sequence | Frames | ATE RMSE (m) | Drift Final (m) | RV Violations | Evidence Alignment | Status |
-|---|---|---:|---:|---:|---:|---:|---|
+|---|---:|---:|---:|---:|---:|---|
 | 2011_09_26_drive_0009_sync | 447 | 303.074 | 445.672 | 157 | 1.000 | Completed |
 | 2011_09_26_drive_0015_sync | 297 | 293.076 | 529.582 | 83 | 1.000 | Completed |
 | 2011_09_26_drive_0023_sync | 474 | 225.065 | 394.961 | 150 | 1.000 | Completed |
@@ -436,7 +436,7 @@ If you use this project in your research, please cite it as:
   version = {0.1.0},
   author = {Qurban},
   year = {2026},
-  url = {https://github.com/lakhanqurban/VLM}
+  url = {https://github.com/lakhanqurban/vigilant}
 }
 ```
 
