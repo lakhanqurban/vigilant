@@ -136,7 +136,7 @@ flowchart TD
 The EKF registers the ORB-SLAM3 export to the GPS frame (similarity transform from the first 50 frames with adequate tracking quality), then fuses SLAM position, GPS, and IMU-derived velocity. Compare against the raw imported SLAM columns above.
 
 | Sequence | SLAM ATE RMSE (m) | SLAM Drift (m) | Fusion ATE RMSE (m) | Fusion Drift (m) |
-|---|---|---:|---:|---:|---:|
+|---|---:|---:|---:|---:|
 | 2011_09_26_drive_0009_sync | 303.074 | 445.672 | 4.586 | 1.718 |
 | 2011_09_26_drive_0015_sync | 293.076 | 529.582 | 2.250 | 3.533 |
 | 2011_09_26_drive_0023_sync | 225.065 | 394.961 | 4.895 | 0.613 |
