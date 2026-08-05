@@ -1,0 +1,46 @@
+{
+  "_note": "ILLUSTRATIVE PLACEHOLDER ONLY. These labels are derived from the numeric metrics in outputs/latest_run.json to demonstrate the annotation schema and evaluation workflow. For the actual results, replace expected_claims and expected_hazards with genuine expert annotations (see docs/evaluation.md).",
+  "_claim_taxonomy": [
+    "low_feature_support",
+    "geometric_inconsistency",
+    "trajectory_drift",
+    "safety_violation",
+    "environmental_obstruction",
+    "motion_blur"
+  ],
+  "_hazard_taxonomy": [
+    "localization_degradation",
+    "safety_violation",
+    "visual_ambiguity",
+    "dynamic_obstacle",
+    "model_reported_risk",
+    "none"
+  ],
+  "sequences": [
+    {
+      "sequence_id": "2011_09_26_drive_0009_sync",
+      "expected_claims": ["trajectory_drift", "safety_violation"],
+      "expected_hazards": ["localization_degradation", "safety_violation"]
+    },
+    {
+      "sequence_id": "2011_09_26_drive_0015_sync",
+      "expected_claims": ["trajectory_drift", "geometric_inconsistency", "safety_violation"],
+      "expected_hazards": ["localization_degradation", "safety_violation"]
+    },
+    {
+      "sequence_id": "2011_09_26_drive_0023_sync",
+      "expected_claims": ["trajectory_drift", "safety_violation"],
+      "expected_hazards": ["localization_degradation", "safety_violation"]
+    },
+    {
+      "sequence_id": "2011_09_26_drive_0036_sync",
+      "expected_claims": ["trajectory_drift", "geometric_inconsistency", "safety_violation"],
+      "expected_hazards": ["localization_degradation", "safety_violation"]
+    },
+    {
+      "sequence_id": "2011_09_26_drive_0093_sync",
+      "expected_claims": ["trajectory_drift", "geometric_inconsistency", "safety_violation"],
+      "expected_hazards": ["localization_degradation", "safety_violation"]
+    }
+  ]
+}

@@ -436,7 +436,7 @@ If you use this project in your research, please cite it as:
   version = {0.1.0},
   author = {Qurban},
   year = {2026},
-  url = {https://github.com/lakhanqurban/vigilant}
+  url = {https://github.com/lakhanqurban/VLM}
 }
 ```
 

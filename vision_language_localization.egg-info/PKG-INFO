@@ -1,0 +1,90 @@
+Metadata-Version: 2.4
+Name: vision-language-localization
+Version: 0.1.0
+Summary: Vision-Language assisted localization and runtime safety analysis
+Author: Qurban
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+
+# Vision-Language Assisted Safety and Localization
+
+This repository implements a research-oriented baseline for:
+
+Can Vision-Language Models improve explainability and trustworthiness of localization and safety monitoring in autonomous systems without replacing formal verification?
+
+The implementation uses your existing KITTI-style dataset under the `dataset/` folder and builds a modular pipeline with:
+- Visual SLAM baseline (simulated module ready to swap with ORB-SLAM3/OpenVSLAM)
+- External trajectory-file ingestion backend for real SLAM outputs
+- Sensor fusion baseline
+- Runtime verification (STL-inspired temporal properties)
+- Vision-Language explanation backends (rule-based, local HF image model, and Qwen multimodal)
+- Evidence-grounded explanation scoring
+- Evaluation and interactive dashboard
+
+## Repository Structure
+
+- `vision_language_localization/`: Python package implementation
+- `scripts/`: runnable entry points
+- `dashboard/`: Streamlit dashboard
+- `prompts/`: VLM prompt templates
+- `docs/`: critical analysis and research upgrades
+- `docker/`: containerized execution
+- `dataset/`: existing KITTI-style data (already present)
+- `outputs/`: generated reports
+
+## Quick Start
+
+1) Create and activate your Python environment (recommended: your conda env `rv`).
+2) Install dependencies:
+
+   pip install -r requirements.txt
+
+3) Run the baseline pipeline:
+
+   python scripts/run_pipeline.py --dataset-root dataset --output-root outputs --max-frames 300
+
+4) Launch the dashboard:
+
+   streamlit run dashboard/app.py
+
+## Advanced Runs
+
+- Use external SLAM trajectories:
+
+   python scripts/run_pipeline.py --dataset-root dataset --output-root outputs --slam-backend trajectory_file --trajectory-root slam
+
+- Use local HF model backend for explanation generation (optional dependencies required):
+
+   pip install -r requirements_vlm_local.txt
+   python scripts/run_pipeline.py --dataset-root dataset --output-root outputs --vlm-backend hf_local --vlm-model-name Qwen/Qwen2.5-VL-7B-Instruct
+
+- Use Qwen multimodal backend (image + prompt + explanation):
+
+   pip install -r requirements_vlm_local.txt
+   python scripts/run_pipeline.py --dataset-root dataset --output-root outputs --vlm-backend qwen_vl --vlm-model-name Qwen/Qwen2.5-VL-3B-Instruct --vlm-max-new-tokens 180 --vlm-temperature 0.0
+
+## What Is Implemented Now
+
+- Loader for KITTI-like OXTS trajectories from your dataset drives.
+- Deterministic SLAM simulation module that reproduces realistic degradation patterns.
+- Lightweight visual plus inertial fusion baseline.
+- Runtime checks for temporal properties:
+  - Always position error below threshold
+  - Never tracking loss longer than threshold
+  - Eventually recovery after loss
+- Rule-based VLM baseline producing explanation, hazards, and hallucination-risk proxy.
+- Optional local HF backend for image-conditioned scene description plus metric-grounded explanation.
+- Evidence alignment scoring between explanation claims and measurable signals.
+- Report generation to `outputs/latest_run.json`.
+
+## Next Research-Grade Upgrades
+
+High-priority upgrades are detailed in `docs/critical_analysis_and_improvements.md` and include:
+- Replacing mock SLAM with ORB-SLAM3 trajectory/log ingestion
+- Replacing rule-based VLM with Qwen2.5-VL (or InternVL3)
+- Evidence-grounded explanation scoring and calibration
+- Statistical significance testing across sequences and seeds
+
+See also:
+- `docs/trajectory_ingestion.md`
+- `docs/critical_analysis_and_improvements.md`

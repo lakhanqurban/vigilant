@@ -1,0 +1,9 @@
+services:
+  vlm-localization:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    volumes:
+      - ../dataset:/app/dataset:ro
+      - ../outputs:/app/outputs
+    command: ["python", "scripts/run_pipeline.py", "--dataset-root", "dataset", "--output-root", "outputs"]
